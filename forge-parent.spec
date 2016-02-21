@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        31
-Release:        2.11%{?dist}
+Release:        2.12%{?dist}
 Summary:        Sonatype Forge Parent Pom
 License:        ASL 2.0
 URL:            https://docs.sonatype.org/display/FORGE/Index
@@ -12,7 +12,7 @@ Source0:        http://repo1.maven.org/maven2/org/sonatype/forge/%{pkg_name}/%{v
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch:      noarch
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-maven-source-plugin
+BuildRequires:  %{?scl_prefix}maven-source-plugin
 
 %description
 Sonatype Forge is an open-source community dedicated to the creation of the 
@@ -20,7 +20,7 @@ next-generation of development tools and technologies.
 
 %prep
 %setup -qcT -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 cp -p %{SOURCE0} pom.xml
 cp -p %{SOURCE1} LICENSE
@@ -29,13 +29,13 @@ cp -p %{SOURCE1} LICENSE
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -45,6 +45,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 31-2.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 31-2.11
 - maven33 rebuild
 
