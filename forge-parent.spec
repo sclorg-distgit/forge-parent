@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}forge-parent
 Version:        38
-Release:        8.1%{?dist}
+Release:        8.2%{?dist}
 Summary:        Sonatype Forge Parent Pom
 License:        ASL 2.0
 URL:            https://docs.sonatype.org/display/FORGE/Index
@@ -37,6 +37,9 @@ cp -p %{SOURCE1} LICENSE
 %doc LICENSE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 38-8.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 38-8.1
 - Automated package import and SCL-ization
 
